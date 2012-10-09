@@ -47,6 +47,11 @@ Logger * g_pLoggerInstance;
     return [dateFormatter stringFromDate:[NSDate date]];
 }
 
+// N.B.
+// This message doesn't do much (it is a cut down version of a more complicated message).
+// I have left it here ecause the crash is much harder to reproduce without it.
+//
+// I am just keeping a reference to the last log message, nothing dangerous right?
 - (BOOL) duplicateLog:(NSString*)log
 {
     m_lastLog = log;
