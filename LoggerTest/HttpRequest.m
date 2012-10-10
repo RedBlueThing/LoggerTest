@@ -30,8 +30,7 @@
  */
 - (void)dealloc
 {
-	[self cancel];
-    [[Logger instance] appendInfoLog:[NSString stringWithFormat:@"HttpRequest(%08X) dealloc", (int)self] withSummary:@"HTTP_DEALLOC"];
+    assert (m_connection == nil);
 }
 
 /*
@@ -156,8 +155,6 @@
  */
 - (void)cancel
 {
-    [[Logger instance] appendInfoLog:[NSString stringWithFormat:@"HttpRequest(%08X) Cancel - %08X", (int)self, (int)m_connection] withSummary:@"HTTP_CANCEL"];
-    
     // ignore second cancel if we get one
     if (m_connection == nil)
         return;
